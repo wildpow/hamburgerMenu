@@ -2,7 +2,6 @@ import React from "react";
 import MenuItem from "./MenuItem";
 import Menu from "./Menu";
 import MenuButton from "./MenuButton";
-import Footer from "./Footer";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,19 +23,17 @@ class App extends React.Component {
     const styles = {
       container: {
         position: "absolute",
-        top: 0,
-        left: 0,
+        top: 30,
+        right: 30,
         zIndex: "99",
         opacity: 0.9,
         display: "flex",
         alignItems: "center",
-        background: "black",
-        width: "100%",
+        background: "white",
+        // width: "100%",
         color: "white",
-        fontFamily: "Lobster"
-      },
-      logo: {
-        margin: "0 auto"
+        fontFamily: "Lobster",
+        border: "2px solid red"
       },
       body: {
         display: "flex",
@@ -69,14 +66,12 @@ class App extends React.Component {
           <MenuButton
             open={this.state.menuOpen}
             onClick={() => this.handleMenuClick()}
-            color="white"
+            color="black"
           />
-          <div style={styles.logo}>Logo</div>
         </div>
         <Menu open={this.state.menuOpen}>{menuItems}</Menu>
-        <div style={styles.body}>
-          <Footer name="Menu" />
-        </div>
+        <h1>hello</h1>
+        <div style={styles.body}>{/* <Footer name="Menu" /> */}</div>
       </div>
     );
   }

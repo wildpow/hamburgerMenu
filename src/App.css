@@ -12,7 +12,7 @@
 
 @keyframes slideIn {
   0% {
-    transform: translateX(-2%);
+    transform: translateX(20%);
   }
   100% {
     transform: translateX(0);
@@ -21,9 +21,26 @@
 
 @keyframes shrink {
   0% {
-    width: 95%;
+    width: 0%;
   }
   100% {
     width: 90%;
   }
 }
+
+/* @keyframes slideIn {
+  0% {
+    transform: translateX(-2%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+} */
+/* @keyframes slideIn {
+  0% {
+    transform: translateX(-2%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+} */

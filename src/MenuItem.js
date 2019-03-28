@@ -21,7 +21,7 @@ class MenuItem extends React.Component {
       },
       menuItem: {
         fontFamily: "'Roboto', sans-serif",
-        fontSize: "1.2rem",
+        fontSize: "1.8rem",
         padding: "1rem 0",
         margin: "0 5%",
         cursor: "pointer",

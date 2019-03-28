@@ -1,5 +1,21 @@
 import React from "react";
+import styled from "styled-components";
 
+const Container = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: ${props => (props.open ? "300px" : 0)};
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #1565c0;
+  opacity: 0.95;
+  color: #fafafa;
+  transition: width 0.3s ease;
+  z-index: 2;
+  padding-top: 3rem;
+`;
 class Menu extends React.Component {
   constructor(props) {
     super(props);
@@ -15,31 +31,10 @@ class Menu extends React.Component {
   }
 
   render() {
-    const styles = {
-      container: {
-        position: "absolute",
-        top: 0,
-        right: 0,
-        width: this.state.open ? "300px" : 0,
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        background: "#1565c0",
-        opacity: 0.95,
-        color: "#fafafa",
-        transition: "width 0.3s ease",
-        zIndex: 2
-      },
-      menuList: {
-        paddingTop: "3rem"
-      }
-    };
     return (
-      <div style={styles.container}>
-        {this.state.open ? (
-          <div style={styles.menuList}>{this.props.children}</div>
-        ) : null}
-      </div>
+      <Container open={this.state.open}>
+        {this.state.open ? this.props.children : null}
+      </Container>
     );
   }
 }

@@ -2,7 +2,33 @@ import React from "react";
 import MenuItem from "./MenuItem";
 import Menu from "./Menu";
 import MenuButton from "./MenuButton";
+import styled, { keyframes } from "styled-components";
 
+export const Appear = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+export const SlideIn = keyframes`
+  0% {
+    transform: translateX(20%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`;
+
+export const Shrink = keyframes`
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 90%;
+  }
+`;
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -59,7 +85,7 @@ class App extends React.Component {
       return (
         <MenuItem
           key={index}
-          delay={`${index * 0.07}s`}
+          delay={`${index * 0.05}s`}
           onClick={() => {
             this.handleLinkClick();
           }}

@@ -22,8 +22,8 @@ class MenuButton extends React.Component {
   render() {
     const styles = {
       container: {
-        height: "32px",
-        width: "32px",
+        // height: "37px",
+        // width: "47px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -32,24 +32,26 @@ class MenuButton extends React.Component {
         padding: "4px"
       },
       line: {
-        height: "2px",
-        width: "20px",
-        background: this.state.open ? "white" : this.state.color,
+        height: "7px",
+        width: "45px",
         transition: "all 0.2s ease"
       },
       lineTop: {
-        transform: this.state.open ? "rotate(45deg)" : "none",
+        transform: this.state.open ? "translateY(-1px) rotate(45deg)" : "none",
         transformOrigin: "top left",
-        marginBottom: "5px"
+        marginBottom: "8px",
+        backgroundColor: this.state.open ? "white" : "#eb1c24"
       },
       lineMiddle: {
         opacity: this.state.open ? 0 : 1,
-        transform: this.state.open ? "translateX(-16px)" : "none"
+        transform: this.state.open ? "translateX(-16px)" : "none",
+        backgroundColor: this.state.open ? "white" : "#1565c0"
       },
       lineBottom: {
-        transform: this.state.open ? "translateX(-1px) rotate(-45deg)" : "none",
+        transform: this.state.open ? "translateX(-5px) rotate(-45deg)" : "none",
         transformOrigin: "top left",
-        marginTop: "5px"
+        marginTop: "8px",
+        backgroundColor: this.state.open ? "white" : "#eb1c24"
       }
     };
     return (

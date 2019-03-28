@@ -3,31 +3,42 @@ import MenuItem from "./MenuItem";
 import Menu from "./Menu";
 import MenuButton from "./MenuButton";
 import styled, { keyframes } from "styled-components";
-
+// export const FadeIn = keyframes`
+//   from { opacity: 0; }
+//   to { opacity: 1; }
+// `;
 export const Appear = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 `;
 export const SlideIn = keyframes`
-  0% {
-    transform: translateX(20%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  from { transform: translateX(20%); }
+  to { transform: translateX(0); }
 `;
 
 export const Shrink = keyframes`
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 90%;
-  }
+  0% {width: 0%; }
+  100% { width: 90%; }
+`;
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  filter: ${props => (props.menuOpen ? "blur(2px)" : null)};
+  transition: filter 0.5s ease;
+`;
+const ButtonContainer = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 99;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  top: 20;
+  right: 20;
 `;
 class App extends React.Component {
   constructor(props) {
@@ -46,29 +57,6 @@ class App extends React.Component {
   }
 
   render() {
-    const styles = {
-      container: {
-        position: "absolute",
-        top: 20,
-        right: 20,
-        zIndex: "99",
-        opacity: 0.9,
-        display: "flex",
-        alignItems: "center"
-        // background: "white",
-        // width: "100%",
-        // color: "white"
-      },
-      body: {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100vw",
-        height: "100vh",
-        filter: this.state.menuOpen ? "blur(2px)" : null,
-        transition: "filter 0.5s ease"
-      }
-    };
     const menu = [
       "Home",
       "Sale",
@@ -94,19 +82,21 @@ class App extends React.Component {
         </MenuItem>
       );
     });
-
+    const { menuOpen } = this.state;
     return (
       <div>
-        <div style={styles.container}>
+        <ButtonContainer>
           <MenuButton
-            open={this.state.menuOpen}
+            open={menuOpen}
             onClick={() => this.handleMenuClick()}
-            color="black"
+            // color="black"
           />
-        </div>
-        <Menu open={this.state.menuOpen}>{menuItems}</Menu>
-        <h1>hello</h1>
-        <div style={styles.body}>{/* <Footer name="Menu" /> */}</div>
+        </ButtonContainer>
+        <Menu open={menuOpen}>{menuItems}</Menu>
+
+        <Body menuOpen={menuOpen}>
+          <h1>hello</h1>
+        </Body>
       </div>
     );
   }

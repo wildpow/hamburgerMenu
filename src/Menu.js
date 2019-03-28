@@ -19,15 +19,15 @@ class Menu extends React.Component {
       container: {
         position: "absolute",
         top: 0,
-        left: 0,
-        height: this.state.open ? "100%" : 0,
-        width: "100vw",
+        right: 0,
+        width: this.state.open ? "300px" : 0,
+        height: "100vh",
         display: "flex",
         flexDirection: "column",
-        background: "black",
+        background: "#1565c0",
         opacity: 0.95,
         color: "#fafafa",
-        transition: "height 0.3s ease",
+        transition: "width 0.3s ease",
         zIndex: 2
       },
       menuList: {

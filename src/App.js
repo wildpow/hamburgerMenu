@@ -23,17 +23,15 @@ class App extends React.Component {
     const styles = {
       container: {
         position: "absolute",
-        top: 30,
-        right: 30,
+        top: 20,
+        right: 20,
         zIndex: "99",
         opacity: 0.9,
         display: "flex",
-        alignItems: "center",
-        background: "white",
+        alignItems: "center"
+        // background: "white",
         // width: "100%",
-        color: "white",
-        fontFamily: "Lobster",
-        border: "2px solid red"
+        // color: "white"
       },
       body: {
         display: "flex",
@@ -45,12 +43,23 @@ class App extends React.Component {
         transition: "filter 0.5s ease"
       }
     };
-    const menu = ["About Us", "Our Products", "Services", "FAQ", "Contact Us"];
+    const menu = [
+      "Home",
+      "Sale",
+      "Brands",
+      "Adjustable",
+      "Financing",
+      "Our Blog",
+      "About Us",
+      "Warranty",
+      "Policies",
+      "Site Map"
+    ];
     const menuItems = menu.map((val, index) => {
       return (
         <MenuItem
           key={index}
-          delay={`${index * 0.1}s`}
+          delay={`${index * 0.07}s`}
           onClick={() => {
             this.handleLinkClick();
           }}

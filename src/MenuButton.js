@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  /* height: "37px",
-        width: "47px", */
+  height: 37px;
+  width: 47px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,8 +34,8 @@ const LineMiddle = styled(Line)`
 const LineBottom = styled(Line)`
   transform: ${props =>
     props.open ? "translateX(-5px) rotate(-45deg)" : "none"};
-  transform-origin: "top left";
-  margin-top: "8px";
+  transform-origin: top left;
+  margin-top: 8px;
   background-color: ${props => (props.open ? "white" : "#eb1c24")};
 `;
 class MenuButton extends React.Component {

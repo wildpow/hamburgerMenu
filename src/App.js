@@ -3,10 +3,8 @@ import MenuItem from "./MenuItem";
 import Menu from "./Menu";
 import MenuButton from "./MenuButton";
 import styled, { keyframes } from "styled-components";
-// export const FadeIn = keyframes`
-//   from { opacity: 0; }
-//   to { opacity: 1; }
-// `;
+import MenuButtonz from "./newMenuButton";
+
 export const Appear = keyframes`
   from { opacity: 0; }
   to { opacity: 1; }
@@ -15,7 +13,10 @@ export const SlideIn = keyframes`
   from { transform: translateX(20%); }
   to { transform: translateX(0); }
 `;
-
+export const SlideOut = keyframes`
+  from { transform: translateX(0);}
+  to { transform: translateX(20%);}
+`;
 export const Shrink = keyframes`
   0% {width: 0%; }
   100% { width: 90%; }
@@ -95,6 +96,55 @@ class App extends React.Component {
         <Menu open={menuOpen}>{menuItems}</Menu>
 
         <Body menuOpen={menuOpen}>
+          <MenuButtonz />
+          {/* <a
+            href="#nav"
+            class="nav__toggle"
+            role="button"
+            aria-expanded="false"
+            aria-controls="menu"
+          >
+            <svg
+              class="menuicon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+            >
+              <title>Toggle Menu</title>
+              <g>
+                <line
+                  class="menuicon__bar"
+                  x1="13"
+                  y1="16.5"
+                  x2="37"
+                  y2="16.5"
+                />
+                <line
+                  class="menuicon__bar"
+                  x1="13"
+                  y1="24.5"
+                  x2="37"
+                  y2="24.5"
+                />
+                <line
+                  class="menuicon__bar"
+                  x1="13"
+                  y1="24.5"
+                  x2="37"
+                  y2="24.5"
+                />
+                <line
+                  class="menuicon__bar"
+                  x1="13"
+                  y1="32.5"
+                  x2="37"
+                  y2="32.5"
+                />
+                <circle class="menuicon__circle" r="23" cx="25" cy="25" />
+              </g>
+            </svg>
+          </a> */}
           <h1>hello</h1>
         </Body>
       </div>

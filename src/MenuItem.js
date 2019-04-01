@@ -53,7 +53,7 @@ class MenuItem extends React.Component {
         >
           {this.props.children}
         </div>
-        <div style={styles.line} />
+        {/* <div style={styles.line} /> */}
       </div>
     );
   }

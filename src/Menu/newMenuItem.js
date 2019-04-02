@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 const Appear = keyframes`
@@ -6,37 +6,70 @@ const Appear = keyframes`
   to { opacity: 1; }
 `;
 export const SlideIn = keyframes`
-  from { transform: translateX(20%); }
+  from { transform: translateX(60%); }
   to { transform: translateX(0); }
 `;
 const Container = styled.div`
   opacity: 0;
-  animation: 1s ${Appear} forwards;
+  animation: 0.7s ${Appear} forwards;
   animation-delay: ${props => props.delay};
+  transition: all 0.5s ease-in-out;
+  transform: ${props => (props.hover ? "translateX(10px)" : "none")};
 `;
 
 const MenuItems = styled.div`
   font-family: Roboto, sans-serif;
   font-size: 1.8rem;
-  padding: 1rem 0;
-  margin: 0 5%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 3rem;
+  /* text-align: center; */
+  /* padding: 1rem 0 50px 1rem; */
+  width: 100%;
+  /* margin: 0 5%; */
   cursor: pointer;
   color: #fafafa;
-  transition: color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
   animation: 0.5s ${SlideIn} forwards;
   animation-delay: ${props => props.delay};
-  :hover {
-    color: gray;
-  }
+
+  background-color: ${props =>
+    props.hover ? "rgba(17, 75, 95, 0.5)" : "inital"};
 `;
 
-const MenuItem = ({ delay, onClick, children }) => (
-  <Container delay={delay}>
-    <MenuItems delay={delay} onClick={onClick}>
-      {children}
-    </MenuItems>
-    {/* <div style={styles.line} /> */}
-  </Container>
-);
+export const Shrink = keyframes`
+  0% {width: 0%; }
+  100% { width: 90%; }
+`;
+const Line = styled.div`
+  width: 0%;
+  height: 1px;
+  background: gray;
+  margin: 0 auto;
+  animation: 0.8s ${Shrink} forwards;
+  animation-delay: ${props => props.delay};
+`;
+
+const MenuItem = ({ delay, onClick, children }) => {
+  const [hover, setHover] = useState(false);
+  return (
+    <Container delay={delay} hover={hover}>
+      <MenuItems
+        delay={delay}
+        hover={hover}
+        onClick={onClick}
+        onMouseEnter={() => {
+          setHover(true);
+        }}
+        onMouseLeave={() => {
+          setHover(false);
+        }}
+      >
+        {children}
+      </MenuItems>
+      <Line delay={delay} />
+    </Container>
+  );
+};
 
 export default MenuItem;

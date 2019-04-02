@@ -4,6 +4,7 @@ import Menu from "./Menu/newMenu";
 import MenuButton from "./Menu/newerMenuButton";
 import styled, { keyframes } from "styled-components";
 import MenuButtonz from "./newMenuButton";
+import AnotherButton from "./AnotherButton";
 
 export const Appear = keyframes`
   from { opacity: 0; }
@@ -58,6 +59,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { menuOpen } = this.state;
     const menu = [
       "Home",
       "Sale",
@@ -83,7 +85,6 @@ class App extends React.Component {
         </MenuItem>
       );
     });
-    const { menuOpen } = this.state;
     return (
       <div>
         <ButtonContainer>
@@ -93,6 +94,7 @@ class App extends React.Component {
         <Body menuOpen={menuOpen}>
           <MenuButtonz />
           <h1>hello</h1>
+          <AnotherButton />
         </Body>
       </div>
     );

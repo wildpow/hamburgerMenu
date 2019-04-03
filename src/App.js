@@ -6,7 +6,7 @@ import styled, { keyframes } from "styled-components";
 import MenuButtonz from "./newMenuButton";
 // import AnotherButton from "./AnotherButton";
 // import Logo from "./logo.png";
-import Try from "./try3";
+import Try from "./try4";
 
 // const Panda = styled.img`
 //   width: 150px;
@@ -43,7 +43,7 @@ const Body = styled.div`
 const ButtonContainer = styled.div`
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 0px;
   z-index: 99;
   opacity: 0.9;
   display: flex;

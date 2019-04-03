@@ -43,7 +43,7 @@ const Bar = styled.span`
     ${props => (props.open ? Bar3 : null)};
   }
 `;
-const Line = styled.span``;
+
 const Bar1 = css`
   transition: 250ms;
   transform: rotate(45deg);

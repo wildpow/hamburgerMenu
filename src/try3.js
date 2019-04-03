@@ -29,9 +29,9 @@ const Bar = styled.span`
   display: block;
   background: #212121;
   /* border-radius: 2px; */
-  border-bottom: 1px solid #212121;
+  /* border-bottom: 1px solid #212121; */
   width: 27px;
-  height: 3px;
+  height: 4px;
   &:nth-child(1) {
     ${props => (props.open ? Bar1 : null)};
   }
@@ -43,6 +43,7 @@ const Bar = styled.span`
     ${props => (props.open ? Bar3 : null)};
   }
 `;
+const Line = styled.span``;
 const Bar1 = css`
   transition: 250ms;
   transform: rotate(45deg);

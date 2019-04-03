@@ -94,7 +94,7 @@ class App extends React.Component {
         <Body menuOpen={menuOpen}>
           <MenuButtonz />
           <h1>hello</h1>
-          <AnotherButton />
+          {/* <AnotherButton /> */}
         </Body>
       </div>
     );

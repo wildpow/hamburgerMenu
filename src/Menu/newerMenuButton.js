@@ -1,49 +1,104 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
 
-const Container = styled.div`
-  height: 37px;
-  width: 47px;
+const Line1Active = css`
+  transform: translateY(20px) translateX(0) rotate(45deg);
+`;
+const Line2Active = css`
+  transform: translateY(-20px) translateX(0) rotate(-45deg);
+`;
+
+const Poop = styled.div`
+  width: 90px;
+  height: 90px;
   display: flex;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.15s linear;
+  border: ${props =>
+    props.open ? "1px solid rgba(0,0,0,.2)" : "1px solid transparent"};
+  :hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+`;
+const Container = styled.div`
+  width: 70px;
+  height: 40px;
+  margin-bottom: 9px;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  justify-self: center;
+  position: relative;
+  display: block;
+
   cursor: pointer;
-  padding: 4px;
+  /* border-radius: 50%; */
 `;
 
 const Line = styled.div`
-  height: 7px;
-  width: 45px;
-  transition: all 0.2s ease;
+  /* height: 7px;
+  width: 45px; */
+  width: 70px;
+  height: 40px;
+  left: 0;
+  transition: all 0.4s;
+  border-radius: 4px;
+  display: block;
+  position: absolute;
 `;
 const LineTop = styled(Line)`
-  transform: ${props =>
+top: 0;
+  height: 8px;
+  transform: ${props => (props.hover ? "translateY(-4px)" : "translateY(0)")};
+  ${props => props.open && Line1Active};
+  /* transform: ${props =>
     props.open ? "translateY(-1px) rotate(45deg)" : "none"};
-  transform-origin: top left;
-  margin-bottom: 8px;
+  transform-origin: top left; */
+  /* margin-bottom: 8px; */
   background-color: ${props => (props.open ? "white" : "#eb1c24")};
 `;
 
 const LineMiddle = styled(Line)`
+  top: 50%;
+  height: 8px;
   opacity: ${props => (props.open ? 0 : 1)};
   transform: ${props => (props.open ? "translateX(-16px)" : "none")};
   background-color: ${props => (props.open ? "white" : "#1565c0")};
 `;
 
 const LineBottom = styled(Line)`
-  transform: ${props =>
-    props.open ? "translateX(-5px) rotate(-45deg)" : "none"};
-  transform-origin: top left;
-  margin-top: 8px;
+  top: 100%;
+  height: 8px;
+  transform: ${props => (props.hover ? "translateY(4px)" : "translateY(0)")};
+  ${props => props.open && Line2Active};
   background-color: ${props => (props.open ? "white" : "#eb1c24")};
 `;
-const MenuButton = ({ open, onClick }) => (
-  <Container onClick={onClick}>
-    <LineTop open={open} />
-    <LineMiddle open={open} />
-    <LineBottom open={open} />
-  </Container>
-);
+const MenuButton = ({ open, onClick }) => {
+  const [hover, setHover] = useState(false);
+  return (
+    <Poop hover={hover} open={open}>
+      <Container
+        hover={hover}
+        open={open}
+        onClick={onClick}
+        onMouseEnter={() => {
+          setHover(!hover);
+        }}
+        onMouseLeave={() => {
+          setHover(!hover);
+        }}
+      >
+        <LineTop open={open} hover={hover} />
+        <LineMiddle open={open} hover={hover} />
+        <LineBottom open={open} hover={hover} />
+      </Container>
+    </Poop>
+  );
+};
 
 export default MenuButton;

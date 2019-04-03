@@ -14,7 +14,7 @@ const Container = styled.div`
   color: #fafafa;
   transition: width 0.3s ease;
   z-index: 2;
-  padding-top: 6rem;
+  padding-top: 7.6rem;
 `;
 
 const Menu = ({ open, children }) => (

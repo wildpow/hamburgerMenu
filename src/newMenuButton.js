@@ -8,7 +8,7 @@ const Line2Active = css`
   transform: translateY(-25px) translateX(0) rotate(-45deg);
 `;
 const Ham = styled.div`
-  cursor: "pointer";
+  cursor: pointer;
   width: 100px;
   height: 50px;
   position: relative;

@@ -17,14 +17,16 @@ const Nav = styled.a`
   :hover {
     background-color: rgba(0, 0, 0, 0.5);
   }
+  :focus {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 `;
 
 const MenuIcon = styled.line`
   display: block;
   cursor: pointer;
   color: white;
-
-  transform: rotate(0deg);
+  transform: ${props => (props.toggle ? "rotate(180deg)" : "rotate(0deg)")};
   transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   fill: none;
   stroke: currentColor;
@@ -36,163 +38,55 @@ const Bar = styled(MenuIcon)`
   transform-origin: 50% 50%;
   transition: transform 0.25s ease-in-out;
 `;
-
+const Bar2 = styled(MenuIcon)`
+  transform: ${props => (props.toggle ? "rotate(45deg)" : "rotate(0deg);")};
+`;
+const Bar3 = styled(MenuIcon)`
+  transform: ${props => (props.toggle ? "rotate(-45deg)" : "rotate(0deg);")};
+`;
 const Circle = styled(MenuIcon)`
+  /* transition: stroke-dashoffset 0.3s linear 0.1s;
+  stroke-dashoffset: ${props => (props.toggle ? " 0" : "circumference(23)")};
+  stroke-dasharray: circumference(23); */
   transition: stroke-dashoffset 0.3s linear 0.1s;
-  stroke-dashoffset: circumference(23);
-  stroke-dasharray: circumference(23);
+  /* stroke-dashoffset: 144.51326; */
+  stroke-dasharray: 144.51326;
+  stroke-dashoffset: ${props => (props.toggle ? 0 : 144.51326)};
+
 `;
 // nav--open
 const AnotherButton = () => {
-  const [toggle, useToggle] = useState("");
+  const [toggle, useToggle] = useState(false);
   return (
     <>
-      <div class="viewport">
-        <header class="header" role="banner">
-          <nav id="nav" class="nav" role="navigation">
-            <ul
-              class="nav__menu"
-              id="menu"
-              tabindex="-1"
-              aria-label="main navigation"
-              hidden
-            >
-              <li class="nav__item">
-                <a href="#" class="nav__link">
-                  Home
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="#" class="nav__link">
-                  Shop
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="#" class="nav__link">
-                  Blog
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="#" class="nav__link">
-                  About
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="#" class="nav__link">
-                  Contact
-                </a>
-              </li>
-            </ul>
-            <a
-              href="#nav"
-              className={`nav__toggle ${toggle}`}
-              role="button"
-              aria-expanded="false"
-              aria-controls="menu"
-              onClick={() => useToggle("nav--open")}
-            >
-              <svg
-                className="menuicon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="50"
-                height="50"
-                viewBox="0 0 50 50"
-              >
-                <title>Toggle Menu</title>
-                <g>
-                  <line
-                    className="menuicon__bar"
-                    x1="13"
-                    y1="16.5"
-                    x2="37"
-                    y2="16.5"
-                  />
-                  <line
-                    className="menuicon__bar"
-                    x1="13"
-                    y1="24.5"
-                    x2="37"
-                    y2="24.5"
-                  />
-                  <line
-                    className="menuicon__bar"
-                    x1="13"
-                    y1="24.5"
-                    x2="37"
-                    y2="24.5"
-                  />
-                  <line
-                    className="menuicon__bar"
-                    x1="13"
-                    y1="32.5"
-                    x2="37"
-                    y2="32.5"
-                  />
-                  <circle className="menuicon__circle" r="23" cx="25" cy="25" />
-                </g>
-              </svg>
-            </a>
-            <div className="splash" />
-          </nav>
-        </header>
-        <main className="main" role="main">
-          <div className="gallery" aria-label="gallery">
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-            <a href="#" className="gallery__item" />
-          </div>
-        </main>
-      </div>
+      <Nav
+        href="#nav"
+        toggle={toggle}
+        role="button"
+        aria-expanded="false"
+        aria-controls="menu"
+        onClick={() => useToggle(!toggle)}
+      >
+        {console.log(toggle)}
+        <svg
+          className="menuicon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="150"
+          height="150"
+          viewBox="0 0 50 50"
+        >
+          <title>Toggle Menu</title>
+          <g>
+            <Bar3 x1="13" y1="16.5" x2="37" y2="16.5" toggle={toggle} />
+            <Bar x1="13" y1="24.5" x2="37" y2="24.5" toggle={toggle} />
+            <Bar x1="13" y1="24.5" x2="37" y2="24.5" toggle={toggle} />
+            <Bar2 x1="13" y1="32.5" x2="37" y2="32.5" toggle={toggle} />
+            <Circle as="circle" toggle={toggle} r="23" cx="25" cy="25" />
+          </g>
+        </svg>
+      </Nav>
     </>
   );
 };
 
 export default AnotherButton;
-
-{
-  /* <Nav
-href="#nav"
-class="nav__toggle"
-role="button"
-aria-expanded="false"
-aria-controls="menu"
->
-<svg
-  class="menuicon"
-  xmlns="http://www.w3.org/2000/svg"
-  width="50"
-  height="50"
-  viewBox="0 0 50 50"
->
-  <title>Toggle Menu</title>
-  <g>
-    <Bar class="menuicon__bar" x1="13" y1="16.5" x2="37" y2="16.5" />
-    <Bar class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5" />
-    <Bar class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5" />
-    <Bar class="menuicon__bar" x1="13" y1="32.5" x2="37" y2="32.5" />
-    <Circle class="menuicon__circle" r="23" cx="25" cy="25" />
-  </g>
-</svg>
-</Nav> */
-}

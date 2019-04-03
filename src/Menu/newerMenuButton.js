@@ -28,21 +28,13 @@ const Container = styled.div`
   width: 70px;
   height: 40px;
   margin-bottom: 9px;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   justify-self: center;
   position: relative;
   display: block;
-
   cursor: pointer;
-  /* border-radius: 50%; */
 `;
 
 const Line = styled.div`
-  /* height: 7px;
-  width: 45px; */
   width: 70px;
   height: 40px;
   left: 0;
@@ -52,14 +44,10 @@ const Line = styled.div`
   position: absolute;
 `;
 const LineTop = styled(Line)`
-top: 0;
+  top: 0;
   height: 8px;
   transform: ${props => (props.hover ? "translateY(-4px)" : "translateY(0)")};
   ${props => props.open && Line1Active};
-  /* transform: ${props =>
-    props.open ? "translateY(-1px) rotate(45deg)" : "none"};
-  transform-origin: top left; */
-  /* margin-bottom: 8px; */
   background-color: ${props => (props.open ? "white" : "#eb1c24")};
 `;
 

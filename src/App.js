@@ -4,8 +4,17 @@ import Menu from "./Menu/newMenu";
 import MenuButton from "./Menu/newerMenuButton";
 import styled, { keyframes } from "styled-components";
 import MenuButtonz from "./newMenuButton";
-import AnotherButton from "./AnotherButton";
+// import AnotherButton from "./AnotherButton";
+import Logo from "./logo.png";
+import Try from "./try";
 
+const Panda = styled.img`
+  width: 150px;
+  margin: 0 auto;
+  /* transition: all 20s ease-in-out;
+  opacity: ${props => (props.open ? 1 : 0)}; */
+  margin-top: 40px;
+`;
 export const Appear = keyframes`
   from { opacity: 0; }
   to { opacity: 1; }
@@ -90,10 +99,14 @@ class App extends React.Component {
         <ButtonContainer>
           <MenuButton open={menuOpen} onClick={() => this.handleMenuClick()} />
         </ButtonContainer>
-        <Menu open={menuOpen}>{menuItems}</Menu>
+        <Menu open={menuOpen}>
+          {menuItems}
+          <Panda src={Logo} open={menuOpen} />
+        </Menu>
         <Body menuOpen={menuOpen}>
           <MenuButtonz />
           <h1>hello</h1>
+          <Try />
           {/* <AnotherButton /> */}
         </Body>
       </div>

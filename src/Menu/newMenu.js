@@ -5,6 +5,7 @@ const Container = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+  box-shadow: 0 0 10px #85888c;
   width: ${props => (props.open ? "300px" : 0)};
   height: 100vh;
   display: flex;

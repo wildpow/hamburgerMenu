@@ -14,12 +14,12 @@ const Container = styled.div`
   animation: 0.7s ${Appear} forwards;
   animation-delay: ${props => props.delay};
   transition: all 0.5s ease-in-out;
-  transform: ${props => (props.hover ? "translateX(10px)" : "none")};
+  /* transform: ${props => (props.hover ? "translateX(10px)" : "none")}; */
 `;
 
 const MenuItems = styled.div`
   font-family: Roboto, sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 3rem;
@@ -34,7 +34,7 @@ const MenuItems = styled.div`
   animation-delay: ${props => props.delay};
 
   background-color: ${props =>
-    props.hover ? "rgba(17, 75, 95, 0.5)" : "inital"};
+    props.hover ? "rgba(17, 75, 95, 0.4)" : "inital"};
 `;
 
 export const Shrink = keyframes`
@@ -48,6 +48,11 @@ const Line = styled.div`
   margin: 0 auto;
   animation: 0.8s ${Shrink} forwards;
   animation-delay: ${props => props.delay};
+`;
+
+const ShiftTextOnHover = styled.div`
+  transition: all 0.5s ease-in-out;
+  transform: ${props => (props.hover ? "translateX(10px)" : "none")};
 `;
 
 const MenuItem = ({ delay, onClick, children }) => {
@@ -65,7 +70,7 @@ const MenuItem = ({ delay, onClick, children }) => {
           setHover(false);
         }}
       >
-        {children}
+        <ShiftTextOnHover hover={hover}>{children}</ShiftTextOnHover>
       </MenuItems>
       <Line delay={delay} />
     </Container>

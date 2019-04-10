@@ -1,10 +1,10 @@
 import React from "react";
-import MenuItem from "./Menu/newMenuItem";
-import Menu from "./Menu/newMenu";
+import MenuItem from "./MenuItem";
+import Menu from "./Menu";
 import MenuButton from "./Menu/newerMenuButton";
 import styled, { keyframes } from "styled-components";
 import MenuButtonz from "./newMenuButton";
-// import AnotherButton from "./AnotherButton";
+import AnotherButton from "./AnotherButton";
 // import Logo from "./logo.png";
 import Try from "./try4";
 
@@ -97,8 +97,8 @@ class App extends React.Component {
     return (
       <div>
         <ButtonContainer>
-          <Try open={menuOpen} onClick={() => this.handleMenuClick()} />
-          {/* <MenuButton open={menuOpen} onClick={() => this.handleMenuClick()} /> */}
+          {/* <Try open={menuOpen} onClick={() => this.handleMenuClick()} /> */}
+          <MenuButton open={menuOpen} onClick={() => this.handleMenuClick()} />
         </ButtonContainer>
         <Menu open={menuOpen}>{menuItems}</Menu>
         <Body menuOpen={menuOpen}>
